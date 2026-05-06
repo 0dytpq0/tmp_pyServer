@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+# Optional: Windows-specific scripts
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Common binaries
+*.png  -text
+*.jpg  -text
+*.zip  -text
+*.onnx -text
+*.pt   -text
