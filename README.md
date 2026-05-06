@@ -106,6 +106,28 @@ uv sync
 uv tree
 ```
 
+### 기존 requirements.txt 마이그레이션
+
+기존 pip 방식으로 관리되던 `requirements.txt` 파일이 있다면, 아래 명령어로 한 번에 uv 기반(`pyproject.toml` 및 `uv.lock`)으로 마이그레이션할 수 있습니다.
+
+```bash
+uv add -r requirements.txt
+```
+
+> **참고**: 이 명령을 실행하면 패키지가 `.venv`에 설치됨과 동시에 `pyproject.toml`과 `uv.lock`에 자동으로 기록됩니다. 이후부터는 `requirements.txt` 없이 `uv`로만 의존성을 관리하면 됩니다.
+
+### 기존 pip 방식 유지 (선택 사항)
+
+만약 `pyproject.toml` 기반 관리가 낯설고 기존 `pip` 명령어 방식이 편하시다면, `uv pip install` 명령어를 사용할 수 있습니다. 단, 이 방식으로 설치하면 `pyproject.toml`에 자동 기록되지 않으므로 반드시 `requirements.txt`를 수동으로 갱신해야 합니다.
+
+```bash
+# 1. 패키지 설치
+uv pip install <패키지이름>
+
+# 2. requirements.txt 수동 갱신 (필수)
+uv pip freeze > requirements.txt
+```
+
 ---
 
 ## 기존 팀원 업데이트 가이드
